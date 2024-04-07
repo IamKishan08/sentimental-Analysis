@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Review Analysis</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Hotel Review Analysis</h1>
+        <div id="loginForm" class="hidden">
+            <h2>Manager Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="feedbackForm" class="hidden">
+            <h2>Submit Review</h2>
+            <textarea id="reviewText" placeholder="Enter your review here..."></textarea>
+            <button type="submit">Submit Review</button>
+        </div>
+        <div id="feedbackDisplay" class="hidden">
+            <h2>Feedback for <span id="managerName"></span></h2>
+            <div id="feedbackList"></div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

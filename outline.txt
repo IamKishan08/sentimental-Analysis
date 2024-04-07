@@ -1,0 +1,22 @@
+- frontend/             ---- frontend code frontend page  
+  - index.html
+  - script.js
+  - style.css
+- backend/              ---------- backend nodejs for handling frontend and store data and call python code
+  - server.js
+  - controllers/
+    - analyzeController.js                   //// call python code for sentimental analysis
+    - loginController.js
+    - feedbackController.js
+  - models/                     ------- this folder is to define the schema
+    - Review.js
+    - User.js
+    - Dashboard.js
+  - routes/                      ---------- this folder is for API 
+    - analyzeRoutes.js
+    - loginRoutes.js
+    - feedbackRoutes.js
+- sentiment_analysis/
+  - sentiment_analysis.py            ------------ code to analyse positive , negative , neutral
+  - clustering.py                     ----------- code for clustering based on the manager level
+

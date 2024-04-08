@@ -17,6 +17,6 @@ def analyze_sentiment(text):
 
 if __name__ == "__main__":
     
-    text = "I love this hotel, it's amazing!"
+    text = "I  found some trash under my bed"
     sentiment = analyze_sentiment(text)
     print(sentiment)

@@ -15,8 +15,4 @@ def analyze_sentiment(text):
     else:
         return 'neutral'
 
-if __name__ == "__main__":
-    
-    text = "I  found some trash under my bed"
-    sentiment = analyze_sentiment(text)
-    print(sentiment)
+

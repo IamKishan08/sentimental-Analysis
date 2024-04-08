@@ -13,9 +13,9 @@
     - User.js
     - Dashboard.js
   - routes/                      ---------- this folder is for API 
-    - analyzeRoutes.js
-    - loginRoutes.js
-    - feedbackRoutes.js
+    - analyzeRoutes.js         // Endpoint to receive review data for sentiment analysis and clustering.
+    - loginRoutes.js      //  Endpoint for user authentication and login.
+    - feedbackRoutes.js  // Endpoint to store feedback in the respective manager's dashboard.
 - sentiment_analysis/
   - sentiment_analysis.py            ------------ code to analyse positive , negative , neutral
   - clustering.py                     ----------- code for clustering based on the manager level

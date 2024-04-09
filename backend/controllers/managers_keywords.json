@@ -1,0 +1,53 @@
+{
+    "General manager": [
+        "Operations management", "Performance evaluation", "Procurement", "Vendor relations", "Inventory management", "Marketing strategies", "Facility management",
+        "Regulatory compliance", "Employee training", "Public relations", "Strategic planning", "Cost control", "Quality control", "Conflict resolution",
+        "Event planning", "Market analysis", "Forecasting", "Contract negotiation", "Sales management", "Brand management", "Workflow optimization",
+        "Staff development", "Business intelligence", "Innovation", "Crisis management", "Team building", "Leadership development", "Sustainability initiatives",
+        "Performance metrics", "Supply chain management", "Succession planning", "Corporate governance", "Community outreach", "Technology integration",
+        "Diversity and inclusion", "Ethics and integrity", "Workplace safety", "Continuous improvement", "Project management", "Talent acquisition",
+        "Regulatory affairs", "Financial analysis", "Competitive analysis", "Change management", "Benchmarking", "Asset management", "Customer retention",
+        "Feedback mechanisms", "Cultural sensitivity", "Conflict management"
+    ],
+    "Housekeeping Manager": [
+        "Sanitation", "Housekeeping staff", "Cleanliness", "Inventory control", "Quality assurance", "Maintenance", "Housekeeping procedures",
+        "Staff scheduling", "Budget management", "Training", "Performance evaluation", "Standards enforcement", "Room inspections", "Guest satisfaction",
+        "Complaint resolution", "Health and safety", "Emergency response", "Communication", "Collaboration", "Regulatory compliance",
+        "Environmental sustainability", "Linen management", "Cleaning supplies", "Waste management", "Guest privacy", "Hazardous waste disposal",
+        "Energy-saving practices", "Pest control", "Laundry services", "Floor care", "Window cleaning", "Furniture maintenance", "Special projects",
+        "Chemical usage", "Safety protocols", "Cost control", "Recycling programs", "Performance metrics", "Continuous improvement", "Guest room preparation",
+        "Cleaning effectiveness", "Eco-friendly products", "Hygiene standards", "Front desk collaboration", "VIP arrivals", "Housekeeping supplies",
+        "Budget tracking", "Recycling initiatives", "Staff motivation", "Team leadership"
+    ],
+    "Food Manager": [
+        "Culinary trends", "Food presentation", "Portion control", "Recipe development", "Inventory tracking", "Supplier management", "Sanitation standards",
+        "Allergen awareness", "Dietary restrictions", "Food cost analysis", "Menu engineering", "Nutrition guidelines", "Food styling", "Trend analysis",
+        "Food waste reduction", "Local sourcing", "Sustainable practices", "Menu variety", "Taste testing", "Menu customization", "Food labeling",
+        "Culinary innovation", "Foodborne illness prevention", "Food safety regulations", "Seasonal menus", "Menu profitability", "Cross-utilization of ingredients",
+        "Culinary education", "Foodservice equipment", "Food preservation", "Kitchen layout optimization", "Food service standards", "Food quality assurance",
+        "Food handling procedures", "Kitchen hygiene", "Menu adaptation", "Menu forecasting", "Food preparation techniques", "Food industry regulations",
+        "Menu marketing", "Foodservice technology", "Food service training", "Food industry certifications", "Menu specialization", "Menu localization",
+        "Food supply chain", "Food safety training", "Food service logistics", "Menu testing", "Menu reengineering"
+    ],
+    "Safety manager": [
+        "Occupational health", "Safety inspections", "Emergency response planning", "Regulatory compliance", "Incident investigation", "Workplace ergonomics",
+        "Hazard identification", "Safety culture promotion", "Training and education", "Safety equipment maintenance", "Safety audits", "Safety protocols",
+        "Risk management", "Safety communication", "Safety leadership", "Safety policies", "Safety training programs", "Safety legislation",
+        "Safety awareness campaigns", "Environmental health", "Safety monitoring", "Safety consultation", "Safety coordination", "Safety standards development",
+        "Safety performance metrics", "Safety seminars", "Safety recordkeeping", "Safety incentives", "Safety technology", "Safety certifications",
+        "Safety teamwork", "Safety drills", "Safety compliance software", "Safety manuals", "Safety workshops", "Safety guidelines", "Safety inspections software",
+        "Safety regulations updates", "Safety data analysis", "Safety planning", "Safety assessments", "Safety program evaluation", "Safety coaching",
+        "Safety culture surveys", "Safety incident tracking", "Safety best practices", "Safety consultation services", "Safety policy development",
+        "Safety performance evaluations", "Safety advocacy"
+    ],
+    "Service Manager": [
+        "Customer loyalty programs", "Service excellence", "Service recovery strategies", "Customer experience enhancement", "Service quality assurance",
+        "Service innovation", "Service standards enforcement", "Service metrics tracking", "Customer relationship management", "Service training modules",
+        "Service culture development", "Service escalation procedures", "Service improvement initiatives", "Service feedback mechanisms",
+        "Service performance evaluation", "Service satisfaction surveys", "Service automation", "Service differentiation strategies", "Service consistency",
+        "Service mindset training", "Service communication channels", "Service excellence awards", "Service trend analysis", "Service benchmarking",
+        "Service leadership", "Service responsiveness", "Service empowerment", "Service technology integration", "Service personalization",
+        "Service recovery protocols", "Service partnership management", "Service disruption management", "Service problem-solving", "Service optimization",
+        "Service strategy development", "Service innovation labs", "Service coordination", "Service culture workshops", "Service KPIs", "Service cost management"
+    ]
+}

@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const { generateToken } = require('../config/authUtils');
 
 async function login(req, res) {
     const { username, password } = req.body;
@@ -13,12 +14,8 @@ async function login(req, res) {
             return res.status(401).json({ message: 'Invalid username or password' });
         }
 
-        // If login successful, return user data (excluding password) and role
-        const userData = {
-            username: user.username,
-            role: user.role
-        };
-        res.json({ user: userData });
+        const token = generateToken({ username: user.username, role: user.role });
+        res.json({ user: { username: user.username, role: user.role }, token });
     } catch (error) {
         console.error('Error logging in:', error);
         res.status(500).json({ message: 'Error logging in' });

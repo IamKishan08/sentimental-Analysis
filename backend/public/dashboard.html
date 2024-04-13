@@ -4,56 +4,291 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom CSS for styling */
+        header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         background-color: #007bff;
+         color: #fff;
+         padding: 10px;
+         text-align: center;
+        }
+        #logoutButton {
+            background-color: transparent;
+            border: rgb(248, 243, 243) 3px solid;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px; /* Adjust margin for spacing */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for color changes */
+        }
+
+         #logoutButton:hover {
+             background-color: #dc3545; /* Change background color on hover */
+             color: #fff; /* Change text color on hover */
+         }
+
+        #feedbackList {
+            margin-top: 20px;
+        }
+        #feedbackListItems {
+            list-style-type: none;
+            padding: 0;
+        }
+        .container {
+            margin-top: 20px;
+        }
+        .feedback-box {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #complaintsList {
+            color: red;
+        }
+        #complimentsList {
+            color: green;
+        }
+        #neutralList {
+            color: blue;
+        }
+        .glass-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+            height: 150px;
+        }
+        .glass-box:hover {
+            transform: scale(1.05);
+        }
+        .chart-container {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        .feedback-line {
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+        }
+        #managerType {
+            color: #fff;
+            font-size: 18px;
+        }
+        .chartContainer{
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Dashboard</h1>
-    <div id="feedbackList">
-        <h2>Your Feedback</h2>
-        <ul id="feedbackListItems"></ul>
+    <header>
+        <h1>Dashboard</h1>
+        <h1 id="managerHeader"></h1>
+        <button id="logoutButton">Logout</button>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="glass-box text-center">
+                    <h3>Number of Bookings</h3>
+                    <p>50</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="glass-box text-center">
+                    <h3>Vacant Room's</h3>
+                    <p>20</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="glass-box text-center">
+                    <h3>Bookings Per Week</h3>
+                    <p>100</p>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="glass-box text-center">
+                    <h3>Today's Bookings</h3>
+                    <p>10</p>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+    <div class="container">
+    
+         <!-- Pie chart container -->
+         <div class="row chart-container" >
+            <div class="col-md-6 offset-md-3" >
+                <canvas id="feedbackChart"></canvas>
+            </div>
+        </div>
+        <div class="container">
+            <div id="complaintsList">
+                <h2 style="color: black;">Complaints</h2>
+            </div>
+            <div class="feedback-line"></div>
+            <div id="complimentsList">
+                <h2 style="color: black;">Compliments</h2>
+            </div>
+            <div class="feedback-line"></div>
+          <div id="neutralList">
+            <h2 style="color: black;">Neutral</h2>
+            </div>
+        </div>
+        <div id="chartContainer">
+         
+            <h3 style="text-align: center;margin-top: 80px;">Feedback Graph</h3>
+            <canvas id="managerFeedbackChart"></canvas>
+        </div>
+    
     </div>
 
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="dashboard.js"></script>
     <script>
-        const apiUrl = 'http://localhost:3001'; // Change this to your API endpoint
+        // API endpoint
+        const apiUrl = 'http://localhost:3001/api/feedback'; // Change this to your actual API endpoint
 
-        const token = localStorage.getItem('token');
-
-        if (!token) {
-            // Redirect to login page if token is not available
-            window.location.href = '/login.html';
-        }
-
-        fetch(`${apiUrl}/api/feedback`, {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Feedback data:', data);
-            displayFeedback(data.feedback);
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-            const feedbackList = document.getElementById('feedbackListItems');
-            feedbackList.innerHTML = '<li>Error fetching data. Please try again later.</li>';
-        });
-
-        function displayFeedback(feedbackData) {
-            const feedbackList = document.getElementById('feedbackListItems');
-            feedbackList.innerHTML = '';
-            feedbackData.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = `${item.feedback} - Sentiment: ${item.sentiment}`;
-                feedbackList.appendChild(li);
+        function fetchUserData() {
+            $.ajax({
+                url: 'http://localhost:3001/api/user', // Change this to your user data API endpoint
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
+                },
+                success: function(response) {
+                    console.log('User data:', response);
+                    const role = response.role; // Assuming role is a property in the user data
+                    const managerTypeElement = $('#managerType');
+                    managerTypeElement.text(`${role}`);
+                },
+                error: function(error) {
+                    console.error('Error fetching user data:', error);
+                }
             });
         }
+        
+        // Function to fetch data from API
+        function fetchData() {
+            $.ajax({
+                url: apiUrl,
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                    'Content-Type': 'application/json'
+                },
+                success: function(response) {
+                    console.log('Feedback data:', response);
+                    displayFeedback(response.feedback);
+                    updatePieChart(response.feedback);
+                },
+                error: function(error) {
+                    console.error('Error fetching data:', error);
+                    const feedbackList = $('#feedbackListItems');
+                    feedbackList.html('<li>Error fetching data. Please try again later.</li>');
+                }
+            });
+        }
+
+// Function to display feedback in separate lists
+        function displayFeedback(feedbackData) {
+            const complaintsList = $('#complaintsList');
+            const complimentsList = $('#complimentsList');
+            const neutralList = $('#neutralList');
+            feedbackData.forEach(item => {
+                const feedbackItem = `<div class="feedback-box">${item.feedback}</div>`;
+                if (item.sentiment === 'negative') {
+                    complaintsList.append(feedbackItem);
+                } else if (item.sentiment === 'positive') {
+                    complimentsList.append(feedbackItem);
+                } else {
+                    neutralList.append(feedbackItem);
+                }
+                const managerHeader = $('#managerHeader');
+                 managerHeader.text(`${item.manager}`);
+            });
+           
+        }
+
+        // Initialize the pie chart
+        function updatePieChart(feedbackData) {
+            const positiveCount = feedbackData.filter(item => item.sentiment === 'positive').length;
+            const negativeCount = feedbackData.filter(item => item.sentiment === 'negative').length;
+            const neutralCount = feedbackData.filter(item => item.sentiment === 'neutral').length;
+            const pieChartData = [negativeCount, neutralCount, positiveCount];
+
+            const ctx = document.getElementById('feedbackChart').getContext('2d');
+            if (window.feedbackChartInstance) {
+                window.feedbackChartInstance.destroy(); // Destroy existing chart instance
+            }
+            window.feedbackChartInstance = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Negative', 'Neutral', 'Positive'],
+                    datasets: [{
+                        label: 'Feedback Sentiment',
+                        data: pieChartData,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(255, 205, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(255, 205, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                        ],
+                        borderWidth: 1,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: {
+                        display: true,
+                        text: 'Feedback Sentiment Distribution',
+                    },
+                },
+            });
+        }
+
+        // Fetch data when the document is ready
+        $(document).ready(() => {
+            fetchData();
+        });
+
+
+        document.getElementById('logoutButton').addEventListener('click', () => {
+    // Clear user session data
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+
+    // Redirect to login page
+    window.location.href = '/index.html';  
+    });
     </script>
 </body>
 </html>

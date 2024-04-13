@@ -31,7 +31,7 @@ exports.analyzeFeedback = async (req, res) => {
         const feedback = req.body.feedback;
 
         // Make a POST request to the Python server for sentiment analysis
-        const response = await axios.post('http://localhost:5000/analyze-sentiment', { feedback });
+        const response = await axios.post('http://localhost:5001/analyze-sentiment', { feedback });
         const sentiment = response.data.sentiment;
         const manager = classifyFeedback(feedback); // Classify feedback to a manager role
 
